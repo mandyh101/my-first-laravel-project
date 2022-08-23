@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 // home page route
 Route::get('/', function () {
-  return view('posts', [
-    'posts' => Post::all()
-    ]);
+  $document = YamlFrontMatter::ParseFile(
+    resource_path('posts/my-first-post.html'));
+
+    ddd($document->title);
+  // return view('posts', [
+  //   'posts' => Post::all()
+  //   ]);
 });
 
 //individual blog post route
