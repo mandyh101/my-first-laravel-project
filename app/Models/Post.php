@@ -7,13 +7,10 @@ class Post
   public static function find($slug)
   {
     if(!file_exists($path = resource_path("posts/{$slug}.html"))){
-      throw new ModelNoteFoundException();
+      throw new ModelNotFoundException();
     }
 
     //cache page data in memory for 5 seconds
-    $post = cache()->remember("posts.{$slug}", 5 , function() use($path){
-      var_dump('file_get_contents');
-      return file_get_contents($path); 
-    });
+    return cache()->remember("posts.{$slug}", 5 , fn() => file_get_contents($path)); 
   }
 }
