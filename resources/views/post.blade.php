@@ -11,8 +11,10 @@
 <body>
 
   <article>
-    <!-- Make the post that displays a variable. Variable is defined in the view -->
-    <?= $post; ?>
+    <h1><?= $post->title; ?></h1>
+    <div>
+      <?= $post->body; ?>
+    </div>
   </article>
 
   <a href="/">Go back</a>
