@@ -27,15 +27,4 @@ Route::get("posts/{post}", function($slug) {
   $post = Post::find($slug);
   return view('post', ['post' => $post]); //return view called post, pass the post to the view
 
-  // if(!file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")){
-  //   return redirect('/');
-  // }
-
-  // //cache page data in memory for 5 seconds
-  // $post = cache()->remember("posts.{$slug}", 5 , function() use($path){
-  //   var_dump('file_get_contents');
-  //   return file_get_contents($path); 
-  // });
-
-  // return view('post', ['post' => $post]);
 })->where('post', '[A-z_\-]+'); //this tells the route that our {post} wildcard, must contain only 1 or more (+) letters that are lowercase or uppercase ([A-z]) or underscores, or dashes. 
