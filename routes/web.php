@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 // home page route
 Route::get('/', function () {
-    return view('posts');
+    return view('posts', [
+      'posts' => Post::all()
+    ]);
 });
 
 //individual blog post route
