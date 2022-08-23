@@ -1,7 +1,11 @@
 <?php
 
-namespace App\Modelss;
+namespace App\Models;
 
-class Post{
-  
+class Post
+{
+  public static function find($slug)
+  {
+    
+  }
 }
