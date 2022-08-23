@@ -22,16 +22,19 @@ Route::get('/', function () {
 //line 23 - curly braces = wildcard
 //line 24 - the second argument is converting post into a variable that gets file contents.
 Route::get("posts/{post}", function($slug) { 
+  //find  post by its own slug and pass it to a view called "post"
+  $post = Post::find($slug);
+  return view('post', ['post' => $post]); //return view called post, pass the post to the view
 
-  if(!file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")){
-    return redirect('/');
-  }
+  // if(!file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")){
+  //   return redirect('/');
+  // }
 
-  //cache page data in memory for 5 seconds
-  $post = cache()->remember("posts.{$slug}", 5 , function() use($path){
-    var_dump('file_get_contents');
-    return file_get_contents($path); 
-  });
+  // //cache page data in memory for 5 seconds
+  // $post = cache()->remember("posts.{$slug}", 5 , function() use($path){
+  //   var_dump('file_get_contents');
+  //   return file_get_contents($path); 
+  // });
 
-  return view('post', ['post' => $post]);
+  // return view('post', ['post' => $post]);
 })->where('post', '[A-z_\-]+'); //this tells the route that our {post} wildcard, must contain only 1 or more (+) letters that are lowercase or uppercase ([A-z]) or underscores, or dashes. 
