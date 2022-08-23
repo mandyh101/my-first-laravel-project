@@ -8,23 +8,11 @@
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-  <article>
-    <h1><a href="/posts/my-first-post">My first blog</a></h1>
-    <p>
-      This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. This is my first Laracast blog. 
-    </p>
-  </article>
-  <article>
-    <h1><a href="/posts/my-second-post">My second blog</a></h1>
-    <p>
-      This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. This is my SECOND Laracast blog. 
-    </p>
-  </article>
-  <article>
-    <h1><a href="posts/my-third-post">My third blog</a></h1>
-    <p>
-      Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
-    </p>
-  </article>
+  <?php foreach($posts as $post) : ?>
+    <article>
+
+    </article>
+  <?php endforeach; ?>
+
 </body>
 </html>
