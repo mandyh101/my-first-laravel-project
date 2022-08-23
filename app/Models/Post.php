@@ -42,12 +42,8 @@ class Post
   }
 
   public static function find($slug)
-  {
-    if(!file_exists($path = resource_path("posts/{$slug}.html"))){
-      throw new ModelNotFoundException();
-    }
-
-    //cache page data in memory for 5 seconds
-    return cache()->remember("posts.{$slug}", 5 , fn() => file_get_contents($path)); 
+  { //of all the blog posts, find the one with the slug that matches the one that was requested
+    $posts = static::all(); //gets all of the blog posts
+    $posts->firstWhere('slug', $slug); //loops over to return the post where the slug matches the slug
   }
 }
