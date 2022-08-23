@@ -3,7 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
-use Spatie\YamlFrontMatter;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Illuminate\Support\Facades\File;
 
 /*
@@ -20,13 +20,19 @@ use Illuminate\Support\Facades\File;
 // home page route
 Route::get('/', function () {
   $files = File::files(resource_path("posts"));
-  $documents =[];
+  $posts =[];
 
   foreach($files as $file){
-    $documents = YamlFrontMatter::parseFile($file);
-    }
+    $document = YamlFrontMatter::parseFile($file);
+    $posts[] = new Post(
+      $document->title,
+      $document->excerpt,
+      $document->date,
+      $document->body(),
+    );
+  }
   
-  ddd($documents);
+  ddd($posts);
 
   // $document = YamlFrontMatter::ParseFile(
   //   resource_path('posts/my-first-post.html'));
