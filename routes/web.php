@@ -2,9 +2,6 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
-use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,28 +16,9 @@ use Illuminate\Support\Facades\File;
 
 // home page route
 Route::get('/', function () {
-  $files = File::files(resource_path("posts"));
-  $posts =[];
-
-  foreach($files as $file){
-    $document = YamlFrontMatter::parseFile($file);
-    $posts[] = new Post(
-      $document->title,
-      $document->excerpt,
-      $document->date,
-      $document->body(),
-    );
-  }
-  
-  ddd($posts);
-
-  // $document = YamlFrontMatter::ParseFile(
-  //   resource_path('posts/my-first-post.html'));
-
-  
-  // return view('posts', [
-  //   'posts' => Post::all()
-  //   ]);
+  return view('posts', [
+    'posts' => Post::all()
+    ]);
 });
 
 //individual blog post route
