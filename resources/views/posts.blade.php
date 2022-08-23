@@ -15,6 +15,9 @@
         <?= $post->title; ?>
         </a>
       </h1>
+      <p>
+        <em>Published on <?= date('m/d/Y', $post->date) ; ?></em>
+      </p>
       <div>
       <?= $post->excerpt; ?>
       </div>
