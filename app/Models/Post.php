@@ -42,8 +42,7 @@ class Post
   }
 
   public static function find($slug)
-  { //of all the blog posts, find the one with the slug that matches the one that was requested
-    $posts = static::all(); //gets all of the blog posts
-    $posts->firstWhere('slug', $slug); //loops over to return the post where the slug matches the slug
+  { 
+    return static::all()->firstWhere('slug', $slug);
   }
 }
