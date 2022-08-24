@@ -26,6 +26,6 @@ Route::get('/', function () {
 //line 24 - the second argument is converting post into a variable that gets file contents.
 Route::get("posts/{post}", function($slug) { 
   //find  post by its own slug and pass it to a view called "post"
-  $post = Post::find($slug);
+  $post = Post::findOrFail($slug);
   return view('post', ['post' => $post]); //return view called post, pass the post to the view
-})->where('post', '[A-z_\-]+'); //this tells the route that our {post} wildcard, must contain only 1 or more (+) letters that are lowercase or uppercase ([A-z]) or underscores, or dashes. 
+});

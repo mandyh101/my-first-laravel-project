@@ -48,4 +48,14 @@ class Post
   { 
     return static::all()->firstWhere('slug', $slug);
   }
+
+  public static function findOrFail($slug)
+  { 
+    $post = static::all()->firstWhere('slug', $slug);
+
+    if (!$post){
+      abort(404);
+    }
+    return $post;
+  }
 }
