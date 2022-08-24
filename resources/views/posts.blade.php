@@ -15,7 +15,7 @@
         {{$post->title}}
         </a>
       </h1>
-      <p>
+      <p class="{{$loop->even?'diff-bground':''}}">
         <em>Published on <?= date('m/d/Y', $post->date) ; ?></em>
       </p>
       <div>
