@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<!-- todo - work out how to make header component reusable so pge doesnt error if  view doesn't hve the header -->
   <header>
     {{$header}}
   </header>
