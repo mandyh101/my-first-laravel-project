@@ -51,7 +51,7 @@ class Post
 
   public static function findOrFail($slug)
   { 
-    $post = static::all()->firstWhere('slug', $slug);
+    $post = static::find($slug);
 
     if (!$post){
       abort(404);
