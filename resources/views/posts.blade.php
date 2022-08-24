@@ -1,10 +1,8 @@
-@extends('layout')
+<x-layout>
 
-@section('banner')
-  <h1>My first Laravel blog</h1>
-@endsection('banner')
-
-@section('content')
+  <x-slot name='header'>
+    <h1>My Laravel blog</h1>
+  </x-slot>
   @foreach($posts as $post)
     <article>
       <h2>
@@ -20,4 +18,5 @@
       </div>
     </article>
   @endforeach
-@endsection('content')
+
+</x-layout>

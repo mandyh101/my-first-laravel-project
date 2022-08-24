@@ -7,12 +7,14 @@
   <title>My Laracast blog</title>
   <link rel="stylesheet" href="/app.css">
 </head>
+
 <body>
   <header>
-    @yield('banner')
+    {{$header}}
   </header>
   
-  @yield('content')
+  {{$slot}}
 
 </body>
+
 </html>
