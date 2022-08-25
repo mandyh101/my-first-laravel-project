@@ -23,9 +23,7 @@ Route::get('/', function () {
 
 //individual blog post route
 //line 23 - curly braces = wildcard
-//line 24 - the second argument is converting post into a variable that gets file contents.
-Route::get("posts/{post}", function($slug) { 
-  //find  post by its own slug and pass it to a view called "post"
-  $post = Post::findOrFail($slug);
+Route::get("posts/{post}", function($id) { 
+  $post = Post::findOrFail($id);
   return view('post', ['post' => $post]); //return view called post, pass the post to the view
 });
