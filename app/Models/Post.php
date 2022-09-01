@@ -15,4 +15,10 @@ class Post extends Model
     {
       return 'slug';
     }
+
+    //code below builds an eloquent relationship between the post and the category that match in each table
+    public function category()
+    {
+      return $this->belongsTo(category::class);
+    }
 }
