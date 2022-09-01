@@ -6,6 +6,9 @@
   <article>
     <h1>{{$post->title}}</h1>
     <div>
+      <a href="">{!!$post->category->name!!}</a>
+    </div>
+    <div>
       <p>{!!$post->body!!}</p>
     </div>
   </article>
