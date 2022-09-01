@@ -11,7 +11,7 @@
         </a>
       </h2>
       <!-- code below used the eloquent relationship in the Post model to join the post and data table and show the posts matching category name -->
-      <a href="">{{$post->category->name}}</a> 
+      <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a> 
 
       <p class="{{$loop->even?'diff-bground':''}}">
         <em>Published on <?= date('m/d/Y', $post->date) ; ?></em>
