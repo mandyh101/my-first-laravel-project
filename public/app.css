@@ -25,6 +25,12 @@ a:hover {
   color: #a2c8a2;
 }
 
+.main-a {
+  color: inherit;
+  text-decoration:none;
+
+}
+
 .diff-bground{
   background-color: #a2c8a2;
 }
