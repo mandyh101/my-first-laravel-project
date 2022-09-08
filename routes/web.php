@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // home page route
 Route::get('/', function () {
   return view('posts', [
-    'posts' => Post::all()
+    'posts' => Post::with('category')->get()
     ]);
 });
 
