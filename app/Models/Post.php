@@ -19,6 +19,11 @@ class Post extends Model
     //code below builds an eloquent relationship between the post and the category that match in each table
     public function category()
     {
-      return $this->belongsTo(category::class);
+      return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+      return $this->belongsTo(User::class);
     }
 }
