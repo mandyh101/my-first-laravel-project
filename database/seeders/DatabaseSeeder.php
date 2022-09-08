@@ -45,8 +45,8 @@ class DatabaseSeeder extends Seeder
           'category_id' => $study->id,
           'title' => 'My study post',
           'slug' => 'my-study-post',
-          'excerpt' => 'my-study-postmy-study-postmy-study-postmy-study-post',
-          'body' => 'my-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postvmy-study-postmy-study-postvmy-study-postmy-study-post',
+          'excerpt' => '<p></p>my-study-postmy-study-postmy-study-postmy-study-post</p>',
+          'body' => '<p>my-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postvmy-study-postmy-study-postvmy-study-postmy-study-post</p>',
   
         ]);
         Post::create([
@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
           'category_id' => $work->id,
           'title' => 'My work post',
           'slug' => 'my-work-post',
-          'excerpt' => 'my-work-postmy-work-postmy-work-postmy-work-post',
-          'body' => 'my-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postvmy-work-postmy-work-postvmy-work-postmy-work-post',
+          'excerpt' => '<p>my-work-postmy-work-postmy-work-postmy-work-post</p>',
+          'body' => '<p>my-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postvmy-work-postmy-work-postvmy-work-postmy-work-post</p>',
   
         ]);
 
@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
           'category_id' => $personal->id,
           'title' => 'My personal post',
           'slug' => 'my-personal-post',
-          'excerpt' => 'my-personal-postmy-personal-postmy-personal-postmy-personal-post',
-          'body' => 'my-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postvmy-personal-postmy-personal-postvmy-personal-postmy-personal-post',
+          'excerpt' => '<p>my-personal-postmy-personal-postmy-personal-postmy-personal-post</p>',
+          'body' => '<p>my-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postvmy-personal-postmy-personal-postvmy-personal-postmy-personal-post</p>',
   
         ]);
 
