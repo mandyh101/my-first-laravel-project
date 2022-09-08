@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// write route function to listen to queries and log sql of query so we can check for n+1 issue
+Route::get('/', function(){
+  \Illuminate\Support\Facades\DB::listen(function($query){
+    logger($query->sql);
+  });
+  return view('posts', [
+    'posts' => Post::all()
+    ]);
+});
+
 // home page route
 Route::get('/', function () {
   return view('posts', [
@@ -27,7 +37,7 @@ Route::get("posts/{post}", function(Post $post) {
   return view('post', ['post' => $post]); 
 });
 
-Route::get("categories/{category}", function(Category $category){
+Route::get("categories/{category:slug}", function(Category $category){
   return view('posts', [
     'posts'=> $category->posts 
   ]);
