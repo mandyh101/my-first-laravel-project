@@ -23,55 +23,16 @@ class DatabaseSeeder extends Seeder
         Post::truncate();
         Category::truncate();
 
-        $user = User::factory()->create();
+        //create a default user to build with it's factory
+        $user = User::factory()->create([
+          'name'=> 'Mandy Hale'
+        ]);
+
+        //use the default user to override random data when you create database factories
+        Post::factory(5)->create([
+          'user_id' => $user->id
+        ]);
+
         
-        $personal = Category::create([
-          'name' => 'Personal',
-          'slug' => 'personal'
-        ]);
-        
-        $work = Category::create([
-          'name' => 'Work',
-          'slug' => 'work'
-        ]);
-
-        $study = Category::create([
-          'name' => 'Study',
-          'slug' => 'study'
-        ]);
-
-        Post::create([
-          'user_id' => $user->id,
-          'category_id' => $study->id,
-          'title' => 'My study post',
-          'slug' => 'my-study-post',
-          'excerpt' => '<p></p>my-study-postmy-study-postmy-study-postmy-study-post</p>',
-          'body' => '<p>my-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postmy-study-postmy-study-postvvvvmy-study-postmy-study-postvmy-study-postmy-study-postvmy-study-postmy-study-post</p>',
-  
-        ]);
-        Post::create([
-          'user_id' => $user->id,
-          'category_id' => $work->id,
-          'title' => 'My work post',
-          'slug' => 'my-work-post',
-          'excerpt' => '<p>my-work-postmy-work-postmy-work-postmy-work-post</p>',
-          'body' => '<p>my-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postmy-work-postmy-work-postvvvvmy-work-postmy-work-postvmy-work-postmy-work-postvmy-work-postmy-work-post</p>',
-  
-        ]);
-
-        Post::create([
-          'user_id' => $user->id,
-          'category_id' => $personal->id,
-          'title' => 'My personal post',
-          'slug' => 'my-personal-post',
-          'excerpt' => '<p>my-personal-postmy-personal-postmy-personal-postmy-personal-post</p>',
-          'body' => '<p>my-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postmy-personal-postmy-personal-postvvvvmy-personal-postmy-personal-postvmy-personal-postmy-personal-postvmy-personal-postmy-personal-post</p>',
-  
-        ]);
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
