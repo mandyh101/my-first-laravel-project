@@ -23,8 +23,9 @@ class Post extends Model
     }
 
     //Eloquent relationship: a post belongs to a user
-    public function user()
+    //have named the foreign key as the second argument as changed the name of the relationship from user to author
+    public function author()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class, 'user_id');
     }
 }
