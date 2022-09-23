@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = [];
-
+  //be carefull using with here - it now means every time you query a post, youll see the related user and category data too. If you didn't need to load these relationships everytime you viewed a post this could result in unnessecary data usage
     protected $with = ['category', 'author'];
 
     
