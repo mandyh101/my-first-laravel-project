@@ -1,29 +1,21 @@
 <x-layout>
+  @include ('_posts-header')
 
-  <x-slot name='header'>
-    <h1>My Laravel blog</h1>
-  </x-slot>
-  @foreach($posts as $post)
-    <article>
-      <h2>
-        <a href="/posts/{{$post->slug}}">
-        {{$post->title}}
-        </a>
-      </h2>
-      <p>
-        By <a href="/authors/{{$post->author->username}}">{!!$post->author->username!!}</a> 
-      </p>
-      <!-- code below used the eloquent relationship in the Post model to join the post and data table and show the posts matching category name -->
-      <p>
-        Category:<a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>
-      </p> 
-      <p class="{{$loop->even?'diff-bground':''}}">
-        <em>Published on <?= date('m/d/Y', $post->date) ; ?></em>
-      </p>
-      <div>
-      {{$post->excerpt}}
-      </div>
-    </article>
-  @endforeach
+  <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+    <!-- if posts have a count show the posts, else show a message -->
+    @if ($posts->count())
+      <x-post-featured-card :post="$posts->first()"/>
 
+      @if ($posts->count() > 1)
+        <div class="lg:grid lg:grid-cols-2">
+          @foreach ($posts->skip(1) as $post)
+            <x-post-card :post="$post" class="bg-red-500"/>
+          @endforeach
+        </div>
+      @endif
+
+    @else
+      <p class="text-center">Blog posts coming soon!</p>
+    @endif
+  </main>
 </x-layout>
