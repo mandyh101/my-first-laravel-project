@@ -1,5 +1,4 @@
 <!-- this is a partial  -->
-
 <header class="max-w-xl mx-auto mt-20 text-center">
   <h1 class="text-4xl">
       Latest <span class="text-blue-500">Laravel From Scratch</span> News
@@ -16,7 +15,7 @@
   <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
       <!--  Category -->
       <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
-        <div x-data="{show: false}">
+        <div x-data="{show: false}" @click.away = "show = false">
 
           <button 
             @click="show = !show" 
@@ -33,13 +32,11 @@
               </g>
             </svg>
           </button>
-
-          <div x-show="show" class="py-2 absolute bg-gray-100 w-full mt-2 rounded-lg z-50" style="display:none">
-            <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white">Two</a>
-            <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white">One</a>
-            <a href="#" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white">Three</a>
-          </div>
-
+            <div x-show="show" class="py-2 absolute bg-gray-100 w-full mt-2 rounded-lg z-50" style="display:none">
+            @foreach ($categories as $category)
+              <a href="/categories/{{$category->slug}}" class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white">{{ucwords($category->name)}}</a>
+              @endforeach
+            </div>
         </div>
       </div>
 
