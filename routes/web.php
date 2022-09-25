@@ -33,6 +33,7 @@ Route::get("categories/{category:slug}", function(Category $category){
   return view('posts', [
     //use laod() to prevent lazy loading and n+1 issue 
     'posts'=> $category->posts ,
+    'currentCategory' => $category,
     'categories' => Category::all()
   ]);
 });
