@@ -40,7 +40,7 @@
               @foreach ($categories as $category)
                 <a href="/categories/{{$category->slug}}" 
                   class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white
-                  {{isset($currentCategory) && $currentCategory->id === $category->id? 'bg-blue-500 text-white': ''}}
+                  {{isset($currentCategory) && $currentCategory->is($category)? 'bg-blue-500 text-white': ''}}
                   "
                 >
                   {{ucwords($category->name)}}</a>
