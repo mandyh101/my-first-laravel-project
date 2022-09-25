@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 // home page route
 Route::get('/', function () {
   return view('posts', [
-    'posts' => Post::latest()->get()
+    'posts' => Post::latest()->get(),
+    'categories' => Category::all()
     ]);
 });
 
@@ -31,7 +32,8 @@ Route::get("posts/{post}", function(Post $post) {
 Route::get("categories/{category:slug}", function(Category $category){
   return view('posts', [
     //use laod() to prevent lazy loading and n+1 issue 
-    'posts'=> $category->posts 
+    'posts'=> $category->posts ,
+    'categories' => Category::all()
   ]);
 });
 
