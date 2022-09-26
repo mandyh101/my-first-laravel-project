@@ -16,6 +16,7 @@
       <!--  Category -->
       <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
         <x-dropdown>
+          <!-- dropdown trigger -->
           <x-slot name="trigger">
             <button 
               class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex"
@@ -33,17 +34,20 @@
             </button>
           </x-slot>
 
-          <a href="/" 
-            class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white"
-          >
-            All</a>
+          <!-- dropdown links -->
+          <x-dropdown-item href="/">All</x-dropdown-item>
+
           @foreach ($categories as $category)
-            <a href="/categories/{{$category->slug}}" 
+          <x-dropdown-item 
+            href="/categories/{{$category->slug}}" 
+            :active = "true">
+            {{ucwords($category->name)}}</x-dropdown-item>
+            <!-- <a  
               class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white
               {{isset($currentCategory) && $currentCategory->is($category)? 'bg-blue-500 text-white': ''}}
               "
             >
-              {{ucwords($category->name)}}</a>
+              </a> -->
           @endforeach
         </x-dropdown>
       </div>
