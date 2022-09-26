@@ -18,7 +18,6 @@
         <x-dropdown>
           <x-slot name="trigger">
             <button 
-              @click="show = !show" 
               class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex"
             >
               {{isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories'}}
@@ -33,7 +32,7 @@
               </svg>
             </button>
           </x-slot>
-          
+
           <a href="/" 
             class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-gray-300 hover:text-white focus:text-white"
           >
