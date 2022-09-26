@@ -36,7 +36,7 @@
 
           <!-- dropdown links -->
           <x-dropdown-item href="/">All</x-dropdown-item>
-
+          <!-- TODO debug required -->
           @foreach ($categories as $category)
           <x-dropdown-item 
             href="/categories/{{$category->slug}}" 
