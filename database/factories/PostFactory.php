@@ -33,7 +33,7 @@ class PostFactory extends Factory
             'slug' => $this->faker->slug,
             'published_at' => fake()->dateTime(),
             'excerpt' => '<p>' . implode('<p></p>', $this->faker->paragraphs(2)) . '</p>' , //hacky way to turn an array of paragraphs into strings seperated by paragraph tags
-            'body' => $this->faker->paragraph,
+            'body' => '<p>' . implode('<p></p>', $this->faker->paragraphs(6)) . '</p>' 
         ];
     }
 }
