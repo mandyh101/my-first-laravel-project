@@ -35,12 +35,14 @@
           </x-slot>
 
           <!-- dropdown links -->
-          <x-dropdown-item href="/">All</x-dropdown-item>
+            {{-- edit component to access named route --}}
+          <x-dropdown-item href="/" :active="request()->routeIs('home')">All</x-dropdown-item>
 
           @foreach ($categories as $category)
           <x-dropdown-item 
             href="/categories/{{$category->slug}}" 
-            :active="isset($currentCategory)&& $currentCategory->is($category)">
+            {{-- check url slug and make the category item that has a matching slug the active item --}}
+            :active="request()->is("categories/{$category->slug}")">
             {{ucwords($category->name)}}</x-dropdown-item>
           @endforeach
         </x-dropdown>
