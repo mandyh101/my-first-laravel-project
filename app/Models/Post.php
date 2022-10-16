@@ -13,8 +13,20 @@ class Post extends Model
   
     //Eager load category and author data with a post:
     protected $with = ['category', 'author'];
-  //be carefull using with here - it now means every time you query a post, youll see the related user and category data too. If you didn't need to load these relationships everytime you viewed a post this could result in unnessecary data usage
+      //be careful using with here - it now means every time you query a post, youll see the related user and category data too. If you didn't need to load these relationships everytime you viewed a post this could result in unnessecary data usage
     
+      /**
+       * Query scope for easy query building to filter posts
+       */
+      public function scopeFilter($query) //Post::newQuery()->filter
+        {
+          //if user enters a search term, filter posts array for only posts with a title containing a matching word to the %search% term 
+          if (request('search')) {
+            $query
+              ->where('title', 'like', '%' . request('search') . '%') 
+              ->orWhere('body', 'like', '%' . request('search') . '%'); 
+          }
+        }
 
     
     public function getRouteKeyName()
