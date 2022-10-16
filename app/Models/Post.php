@@ -20,13 +20,14 @@ class Post extends Model
        */
       public function scopeFilter($query, array $filters) //Post::newQuery()->filter
         {
-          //if user enters a search term, filter posts array for only posts with a title containing a matching word to the %search% term 
-          if ($filters['search'] ?? false) {
-            $query
-              ->where('title', 'like', '%' . request('search') . '%') 
-              ->orWhere('body', 'like', '%' . request('search') . '%'); 
-          }
+          //use when method to check when a search filter exists, and trigger function if the check is true
+          $query->when($filters['search'] ?? false, fn($query, $search) => 
+          $query
+          ->where('title', 'like', '%' . $search . '%') 
+          ->orWhere('body', 'like', '%' . $search. '%'));
+
         }
+    
 
     
     public function getRouteKeyName()
