@@ -18,10 +18,10 @@ class Post extends Model
       /**
        * Query scope for easy query building to filter posts
        */
-      public function scopeFilter($query) //Post::newQuery()->filter
+      public function scopeFilter($query, array $filters) //Post::newQuery()->filter
         {
           //if user enters a search term, filter posts array for only posts with a title containing a matching word to the %search% term 
-          if (request('search')) {
+          if ($filters['search'] ?? false) {
             $query
               ->where('title', 'like', '%' . request('search') . '%') 
               ->orWhere('body', 'like', '%' . request('search') . '%'); 
