@@ -18,11 +18,23 @@ use Illuminate\Support\Facades\Route;
 
 // home page route
 Route::get('/', function () {
-  return view('posts', [
-    'posts' => Post::latest()->get(),
-    'categories' => Category::all()
-    ]);
-})->name('home');
+
+
+  $posts = Post::latest();
+
+  //if user enters a search term, posts will be an array of only posts with a title containing a matching word to the search term 
+
+  if (request('search')) {
+    $posts
+      ->where('title', 'like', '%' . request('search') . '%') 
+      ->orWhere('body', 'like', '%' . request('search') . '%'); 
+  }
+
+    return view('posts', [
+      'posts' => $posts->get(),
+      'categories' => Category::all()
+      ]);
+  })->name('home');
 
 
 Route::get("posts/{post}", function(Post $post) { 
