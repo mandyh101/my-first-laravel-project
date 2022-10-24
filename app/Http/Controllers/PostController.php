@@ -12,7 +12,6 @@ class PostController extends Controller
     {
         return view('posts', [
           'posts' => Post::latest()->filter(request(['search', 'category']))->get(), //filter by the search term from the request as an array - passes to the query scope
-          'categories' => Category::all(),
           'currentCategory' => Category::firstWhere('slug', request('category'))
           ]);
     }
