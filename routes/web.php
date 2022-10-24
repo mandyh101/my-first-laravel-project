@@ -23,14 +23,6 @@ Route::get('/', [PostController::class, 'index' ])->name('home');
 //single post route
 Route::get("posts/{post}", [PostController::class, 'show' ]);
 
-Route::get("categories/{category:slug}", function(Category $category){
-  return view('posts', [
-    //use laod() to prevent lazy loading and n+1 issue 
-    'posts'=> $category->posts ,
-    'currentCategory' => $category,
-    'categories' => Category::all()
-  ]);
-})->name('category');
 
 Route::get("authors/{author:username}", function(User $author){
   return view('posts', [
