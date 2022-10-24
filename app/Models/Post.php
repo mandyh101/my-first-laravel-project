@@ -33,7 +33,7 @@ class Post extends Model
         //   ->whereExists(fn($query) => 
         //   $query->from('categories')
         //   ->whereColumn('categories.id', 'posts.category_id') //Where accepts a vlaue as the second param and so posts.category_id is read a s a string unless you use whereColumn
-        //   ->where('categories.slog', $category)
+        //   ->where('categories.slug', $category)
         // ));
         
 
