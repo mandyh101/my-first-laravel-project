@@ -26,6 +26,24 @@ class Post extends Model
           ->where('title', 'like', '%' . $search . '%') 
           ->orWhere('body', 'like', '%' . $search. '%'));
 
+
+        //* OPTION one for adding categories to the search filter
+        //   $query->when($filters['category'] ?? false, fn($query, $category ) => 
+        //   $query
+        //   ->whereExists(fn($query) => 
+        //   $query->from('categories')
+        //   ->whereColumn('categories.id', 'posts.category_id') //Where accepts a vlaue as the second param and so posts.category_id is read a s a string unless you use whereColumn
+        //   ->where('categories.slog', $category)
+        // ));
+        
+
+        //* OPTION two for adding categories to the search filter
+          $query->when($filters['category'] ?? false, fn($query, $category ) => 
+          $query
+          ->whereHas('category', fn($query) => 
+          $query->where('slug', $category)
+        ));
+
         }
     
 
