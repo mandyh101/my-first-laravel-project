@@ -15,7 +15,8 @@
 
   @foreach ($categories as $category)
   <x-dropdown-item 
-    href="/?category={{$category->slug}}" 
+  {{-- merge category and search queries if user has used both search inputs --}}
+    href="/?category={{$category->slug}}&{{http_build_query(request()->except('category'))}}" 
     :active='request()->is("categories/{$category->slug}")'>
     {{ucwords($category->name)}}</x-dropdown-item>
   @endforeach

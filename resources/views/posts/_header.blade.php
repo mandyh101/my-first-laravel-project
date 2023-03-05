@@ -34,7 +34,11 @@
 
       <!-- Search -->
       <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-          <form method="GET" action="#">
+          <form method="GET" action="/">
+            @if (request('category'))
+              {{-- include category value if one is selected to merge category and search queries together --}}
+            <input type="hidden" name="category" value="{{request('category')}}">
+            @endif
               <input type="text" 
                       name="search" 
                       placeholder="Find something"
