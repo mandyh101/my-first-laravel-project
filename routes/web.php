@@ -22,10 +22,3 @@ Route::get('/', [PostController::class, 'index' ])->name('home');
 
 //single post route
 Route::get("posts/{post}", [PostController::class, 'show' ]);
-
-
-Route::get("authors/{author:username}", function(User $author){
-  return view('posts.index', [
-    'posts'=> $author->posts
-  ]);
-});
