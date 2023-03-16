@@ -12,7 +12,9 @@ class PostController extends Controller
     {
         return view('posts.index', [
           //use query value in the request to filter the posts shown
-          'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(), //filter by the search term from the request as an array - passes to the query scope
+          'posts' => Post::latest()
+                  ->filter(request(['search', 'category', 'author'])) //filter by the search term from the request as an array - passes to the query scope
+                  ->paginate(6) //use paginate instead of get() and set the number per page to 6 (default is 15)
           ]);
     }
 
