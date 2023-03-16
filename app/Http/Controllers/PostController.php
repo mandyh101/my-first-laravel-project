@@ -15,7 +15,7 @@ class PostController extends Controller
           'posts' => Post::latest()
                   ->filter(request(['search', 'category', 'author'])) //filter by the search term from the request as an array - passes to the query scope
                   ->paginate(6) //use paginate instead of get() and set the number per page to 6 (default is 15)
-                  ->withQueryString()
+                  ->withQueryString() //method in the published vendor files for pagination resources/views/vendor/tailwind
           ]);
     }
 
