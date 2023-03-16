@@ -22,9 +22,11 @@ class Post extends Model
         {
           //use when method to check when a search filter exists, and trigger function if the check is true
           $query->when($filters['search'] ?? false, fn($query, $search) => 
-          $query
-          ->where('title', 'like', '%' . $search . '%') 
-          ->orWhere('body', 'like', '%' . $search. '%'));
+          $query->where(fn($query) => 
+            $query->where('title', 'like', '%' . $search . '%') 
+                  ->orWhere('body', 'like', '%' . $search. '%'))
+        );
+          
 
 
         //* OPTION one for adding categories to the search filter
