@@ -16,9 +16,9 @@ class RegisterController extends Controller
     {
       $attributes = $request->validate([
         'name' => ['required', 'string', 'max:255'],
-        'username' => ['required', 'string', 'max:25'],
+        'username' => ['required', 'string', 'min:5' , 'max:25', 'unique:users,username'], //you can pass a third param to the unique which is a variable to ignore e.g the user id
         'email' => ['required', 'email', 'max:255'],
-        'password' => ['required', 'max:255'],
+        'password' => ['required', 'min:8','max:255'],
       ]);
 
       //create the user with validated attributes if validation passes
