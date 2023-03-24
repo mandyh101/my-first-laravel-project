@@ -22,7 +22,10 @@ class RegisterController extends Controller
       ]);
 
       //create the user with validated attributes if validation passes
-      User::create($attributes);
+      $user = User::create($attributes);
+
+      //login the user after they've been created in the database
+      auth()->login($user);
 
       return redirect('/')->with('success', 'Your account has been created!');
     }
