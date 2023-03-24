@@ -6,8 +6,19 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    //
-    public function destroy(Request $request)
+
+      /**
+       * logs in a user
+       */
+      public function create()
+      {
+        return view('sessions.create') ;
+      }
+
+    /**
+     * logs out a user
+     */
+    public function destroy()
     {
       //logout the logged in user
       auth()->logout();
