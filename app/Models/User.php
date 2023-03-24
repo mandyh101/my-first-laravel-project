@@ -43,6 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+  
+    /**
+     * Mutator attribute 
+     * anytime a password for a user is set, it will run through this attribute to hash it
+     */
+    public function setPasswordAttribute($password)
+    {
+      $this->attributes['password'] = bcrypt($password);
+    }
+
     //Eloquent relationship: a user has many posts
     public function posts()
     {
