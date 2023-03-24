@@ -16,11 +16,10 @@
             </div>
 
             <div class="mt-8 md:mt-0">
-              @guest
-                <a href="/register" class="text-xs font-bold uppercase">Register</a>
-              @endguest
               @auth
               <a href="/logout" class="text-xs font-bold uppercase">Logout</a>
+              @else 
+              <a href="/register" class="text-xs font-bold uppercase">Register</a>
               @endauth
 
                 <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
