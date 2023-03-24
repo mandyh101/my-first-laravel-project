@@ -21,10 +21,19 @@ class SessionController extends Controller
   public function store(Request $request)
   {
     //validate the request
+    $attributes = $request()->validate([
+      'username' => ['required', 'exists:users, username'],
+      'password' => ['required']
+    ]);
 
-    //login based on credentials
-
-    //redirect with a session message
+    //the ath attempt method will take the validated attributes and login a user if they have attributes that match
+    if (auth()->attempt($attributes)){
+      return redirect('/')->with('success', 'Welcome back!');
+    }
+    //redirect if auth fails
+    return back()
+      ->withInput() //includes the users input in the form input fields so they can see what has failed
+      ->withErrors(['email' => 'Your provided credentials could not be verified']);
   }
 
   /**
