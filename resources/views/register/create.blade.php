@@ -3,6 +3,7 @@
     <main class="max-w-lg mx-auto mt-10 bg-blue-50 rounded-xl border border-blue-100 p-6">
       <h1 class="text-center font-bold text-xl">Register</h1>
       <form method="POST" action="/register">
+        @csrf
         <div class="mb-6">
           <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
                   for="name"
