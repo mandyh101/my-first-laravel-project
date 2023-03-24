@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
@@ -18,22 +18,27 @@ class SessionController extends Controller
   /**
    * logs in a user based on provided credentials
    */
-  public function store(Request $request)
+  public function store()
   {
-    //validate the request
-    $attributes = $request()->validate([
-      'username' => ['required', 'exists:users, username'],
-      'password' => ['required']
-    ]);
+      $attributes = request()->validate([
+          'username' => 'required|string',
+          'password' => 'required'
+      ]);
 
-    //the ath attempt method will take the validated attributes and login a user if they have attributes that match
-    if (auth()->attempt($attributes)){
-      return redirect('/')->with('success', 'Welcome back!');
-    }
-    //redirect if auth fails
-    return back()
-      ->withInput() //includes the users input in the form input fields so they can see what has failed
-      ->withErrors(['email' => 'Your provided credentials could not be verified']);
+      if (auth()->attempt($attributes)) {
+          session()->regenerate();
+
+          return redirect('/')->with('success', 'Welcome Back!');
+      }
+
+        //redirect if auth fails
+      //   return back()
+      //     ->withInput() //includes the users input in the form input fields so they can see what has failed
+      //     ->withErrors(['email' => 'Your provided credentials could not be verified']);
+      // }
+      throw ValidationException::withMessages([
+        'email' => 'Your provided credentials could not be verified'
+      ]);
   }
 
   /**
