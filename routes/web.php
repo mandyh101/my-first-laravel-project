@@ -21,5 +21,7 @@ Route::get('/', [PostController::class, 'index' ])->name('home');
 //single post route
 Route::get("posts/{post}", [PostController::class, 'show' ]);
 
-Route::get('register', [RegisterController::class, 'create']);
-Route::post('register', [RegisterController::class, 'store']);
+//middleware inspects a request, and can perform logic or redirect the logged in person depending on its logic
+//add guest middleware to register routes so only user are not logged in can see them
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
