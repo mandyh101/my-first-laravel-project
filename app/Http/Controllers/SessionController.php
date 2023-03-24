@@ -26,8 +26,9 @@ class SessionController extends Controller
       ]);
 
       if (auth()->attempt($attributes)) {
-          session()->regenerate();
 
+          //session regenerate can prevent session fixation if signing users in manually like this
+          session()->regenerate();
           return redirect('/')->with('success', 'Welcome Back!');
       }
 
