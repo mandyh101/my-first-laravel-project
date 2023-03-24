@@ -24,6 +24,8 @@ class RegisterController extends Controller
       //create the user with validated attributes if validation passes
       User::create($attributes);
 
+      session()->flash('success', 'Your account has been created!');
+
       return redirect('/');
     }
 
