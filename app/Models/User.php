@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Post;
+use App\Models\Comment;
+
+
 
 class User extends Authenticatable
 {
@@ -57,5 +61,11 @@ class User extends Authenticatable
     public function posts()
     {
       return $this->hasMany(Post::class);
+    }
+
+    //Eloquent relationship: a user has many posts
+    public function comments()
+    {
+      return $this->hasMany(Comment::class);
     }
 }
