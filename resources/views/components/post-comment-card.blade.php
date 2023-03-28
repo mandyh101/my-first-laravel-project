@@ -7,11 +7,11 @@
   <div>
     <header class="mb-4">
       <h3>
-        <strong>Username</strong>
+        <strong>{{$comment->author->username}}</strong>
       </h3>
-      <p class="text-xs">Posted <time>8 days ago</time></p>
+      <p class="text-xs">Posted <time>{{$comment->created_at}}</time></p>
     </header>
-    <p>the comment goes here</p>
+    <p>{{$comment->body}}</p>
   </div>
 
 </article>
