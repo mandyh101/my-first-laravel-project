@@ -2,7 +2,7 @@
 
 <article class="flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-4">
   <div>
-    <img class="rounded-xl" src="https://i.pravatar.cc/50" alt="avatar">
+    <img src="https://i.pravatar.cc/60?u={{$comment->id}}" width="60" height="60" class="rounded-xl" alt="avatar">
   </div>
   <div>
     <header class="mb-4">
