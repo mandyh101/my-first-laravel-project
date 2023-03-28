@@ -53,10 +53,10 @@
                   </div>
               </div>
               <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                  <x-post-comment-card/>
-                  <x-post-comment-card/>
-                  <x-post-comment-card/>
-                  <x-post-comment-card/>
+                @foreach ($comments as $comment)
+                  <x-post-comment-card :comment="$comment"/>
+                @endforeach
+
 
               </section>
           </article>
