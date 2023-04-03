@@ -53,19 +53,22 @@
                   </div>
               </div>
               <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                <form method="POST" action="#" class="border border-gray-200 p-6 rounded-xl space-y-3">
-                  @csrf
-                  <header class="flex items-center space-x-3">
-                    <img src="https://i.pravatar.cc/60?u={{auth()->id()}}" width="40" height="40" class="rounded-full" alt="avatar">
-                    <h2>Leave a comment</h2>
-                  </header>
-                  <div>
-                    <textarea name="comment" id="" rows="5" class="w-full border border-gray-200 text-small focus:outline-none focus:ring" placeholder="Leave your comment here"></textarea>
-                  </div>
-                  <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 text-white text-semibold uppercase text-xs py-2 px-10 rounded-2xl hover:bg-blue-600">Submit</button>
-                  </div>
-                </form>
+                
+                <x-panel>
+                  <form method="POST" action="#" class="space-y-3">
+                    @csrf
+                    <header class="flex items-center space-x-3">
+                      <img src="https://i.pravatar.cc/60?u={{auth()->id()}}" width="40" height="40" class="rounded-full" alt="avatar">
+                      <h2>Leave a comment</h2>
+                    </header>
+                    <div>
+                      <textarea name="comment" id="" rows="5" class="w-full border border-gray-200 text-small focus:outline-none focus:ring" placeholder="Leave your comment here"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                      <button type="submit" class="bg-blue-500 text-white text-semibold uppercase text-xs py-2 px-10 rounded-2xl hover:bg-blue-600">Submit</button>
+                    </div>
+                  </form>
+                </x-panel>
 
                 @foreach ($post->comments as $comment)
                   <x-post-comment-card :comment="$comment"/>
