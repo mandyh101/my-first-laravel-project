@@ -70,6 +70,10 @@
                     </div>
                   </form>
                 </x-panel>
+                @else
+                <p class="font-semibold">
+                  <a href="/register" class="text-blue-800 hover:underline">Register</a> or <a href="/login" class="text-blue-800 hover:underline">login</a> to leave a comment.
+                </p>
                 @endauth
 
                 @foreach ($post->comments as $comment)
