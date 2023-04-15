@@ -54,6 +54,7 @@
               </div>
               <section class="col-span-8 col-start-5 mt-10 space-y-6">
                 
+                @auth
                 <x-panel>
                   <form method="POST" action="/posts/{{$post->slug}}/comments" class="space-y-3">
                     @csrf
@@ -69,6 +70,7 @@
                     </div>
                   </form>
                 </x-panel>
+                @endauth
 
                 @foreach ($post->comments as $comment)
                   <x-post-comment-card :comment="$comment"/>
