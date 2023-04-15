@@ -11,6 +11,16 @@ class Comment extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+      'user_id',
+      'body',
+  ];
+
     //a comment  belongs to a post
     public function post()
     {
