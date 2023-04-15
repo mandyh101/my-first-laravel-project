@@ -63,7 +63,18 @@
                       <h2>Leave a comment</h2>
                     </header>
                     <div>
-                      <textarea name="comment" id="" rows="5" class="w-full border border-gray-200 text-small focus:outline-none focus:ring" placeholder="Leave your comment here"></textarea>
+                      <textarea 
+                        name="comment" 
+                        id="" 
+                        rows="5" 
+                        class="w-full border border-gray-200 text-small focus:outline-none focus:ring" 
+                        placeholder="Leave your comment here"
+                        required
+                        >
+                      </textarea>
+                      @error('comment') 
+                      <span class="text-red-500 text-sm">{{$message}}</span>
+                      @enderror
                     </div>
                     <div class="flex justify-end">
                       <button type="submit" class="bg-blue-500 text-white text-semibold uppercase text-xs py-2 px-10 rounded-2xl hover:bg-blue-600">Submit</button>
