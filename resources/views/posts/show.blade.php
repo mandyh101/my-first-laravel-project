@@ -55,7 +55,7 @@
               <section class="col-span-8 col-start-5 mt-10 space-y-6">
                 
                 <x-panel>
-                  <form method="POST" action="#" class="space-y-3">
+                  <form method="POST" action="/posts/{{$post->slug}}/comments" class="space-y-3">
                     @csrf
                     <header class="flex items-center space-x-3">
                       <img src="https://i.pravatar.cc/60?u={{auth()->id()}}" width="40" height="40" class="rounded-full" alt="avatar">
